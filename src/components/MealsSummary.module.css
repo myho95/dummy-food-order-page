@@ -1,0 +1,20 @@
+.meals-summary {
+  width: 45%;
+  max-width: 90%;
+  background-color: #335c67;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: -10rem;
+  position: relative;
+  box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.5);
+}
+.meals-summary h2 {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.meals-summary p {
+  margin-bottom: 1.5rem;
+}
