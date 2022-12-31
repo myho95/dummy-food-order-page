@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./CardItem.module.css";
+import classes from "./CartItem.module.css";
 
 const CardItem = () => {
   return (

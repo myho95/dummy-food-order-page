@@ -1,5 +1,5 @@
 import React from "react";
-import CardItem from "./CardItem";
+import CartItem from "./CartItem";
 import classes from "./Modal.module.css";
 import TotalAmount from "./TotalAmount";
 import Card from "./UI/Card";
@@ -7,11 +7,15 @@ import Card from "./UI/Card";
 const Modal = (props) => {
   return (
     <section className={classes.modal}>
-      <Card className={classes.backdrop}>
+      <span
+        className={classes.backdrop}
+        onClick={props.onRemoveModalHandle}
+      ></span>
+      <Card className={classes.cart}>
         <ul className={classes["cart-items-list"]}>
-          <CardItem></CardItem>
+          <CartItem></CartItem>
         </ul>
-        <TotalAmount></TotalAmount>
+        <TotalAmount onRemoveModal={props.onRemoveModalHandle}></TotalAmount>
       </Card>
     </section>
   );

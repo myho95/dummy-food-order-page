@@ -8,17 +8,22 @@ const HeaderCartButton = () => {
   const modalHandler = () => {
     setIsShowCart(true);
   };
+  const removeModalHandle = () => {
+    setIsShowCart(false);
+  };
   return (
-    <button className={classes["button"]} onClick={modalHandler}>
-      <i className={`${classes.icon} fas fa-shopping-cart`}></i>
-      Your Cart
-      <span className={classes.badge}>0</span>
+    <React.Fragment>
       {isShowCart &&
         ReactDOM.createPortal(
-          <Modal></Modal>,
+          <Modal onRemoveModalHandle={removeModalHandle}></Modal>,
           document.getElementById("overlay-root")
         )}
-    </button>
+      <button className={classes["button"]} onClick={modalHandler}>
+        <i className={`${classes.icon} fas fa-shopping-cart`}></i>
+        Your Cart
+        <span className={classes.badge}>0</span>
+      </button>
+    </React.Fragment>
   );
 };
 
