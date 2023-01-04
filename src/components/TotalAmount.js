@@ -6,7 +6,7 @@ const TotalAmount = (props) => {
     <div>
       <div className={classes["total-amount"]}>
         <h2>Total Amount</h2>
-        <span>$33.0</span>
+        <span>${props.children}</span>
       </div>
       <div className={classes["actions"]}>
         <Button

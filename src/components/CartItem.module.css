@@ -5,6 +5,8 @@
   align-items: center;
   padding-bottom: 1rem;
   border-bottom: 2px solid #9e2a2b;
+  margin-bottom: 1rem;
+  position: relative;
 }
 .name {
   margin-bottom: 1rem;
@@ -19,6 +21,9 @@
   border: 1px solid #adb5bd;
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
+  position: absolute;
+  left: 5.5rem;
+  bottom: 0.75rem;
 }
 .actions button {
   background-color: transparent;

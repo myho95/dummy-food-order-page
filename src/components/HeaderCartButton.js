@@ -1,27 +1,13 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import classes from "./HeaderCartButton.module.css";
-import Modal from "./Modal";
 
-const HeaderCartButton = () => {
-  const [isShowCart, setIsShowCart] = useState(false);
-  const modalHandler = () => {
-    setIsShowCart(true);
-  };
-  const removeModalHandle = () => {
-    setIsShowCart(false);
-  };
+const HeaderCartButton = (props) => {
   return (
     <React.Fragment>
-      {isShowCart &&
-        ReactDOM.createPortal(
-          <Modal onRemoveModalHandle={removeModalHandle}></Modal>,
-          document.getElementById("overlay-root")
-        )}
-      <button className={classes["button"]} onClick={modalHandler}>
+      <button className={classes["button"]} onClick={props.onModalHandler}>
         <i className={`${classes.icon} fas fa-shopping-cart`}></i>
         Your Cart
-        <span className={classes.badge}>0</span>
+        <span className={classes.badge}>{props.cartCount}</span>
       </button>
     </React.Fragment>
   );

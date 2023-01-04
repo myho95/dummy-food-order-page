@@ -5,17 +5,28 @@ import TotalAmount from "./TotalAmount";
 import Card from "./UI/Card";
 
 const Modal = (props) => {
+  let totalAmount = 0;
   return (
     <section className={classes.modal}>
-      <span
-        className={classes.backdrop}
-        onClick={props.onRemoveModalHandle}
-      ></span>
+      <span className={classes.backdrop} onClick={props.onRemoveModal}></span>
       <Card className={classes.cart}>
         <ul className={classes["cart-items-list"]}>
-          <CartItem></CartItem>
+          {props.cartList.map((item, index) => {
+            totalAmount += item.price * item.quantity;
+            return (
+              <CartItem
+                cartItem={item}
+                key={item.id}
+                itemId={index}
+                onMinusCartItem={props.onMinusItem}
+                onPlusCartItem={props.onPlusItem}
+              ></CartItem>
+            );
+          })}
         </ul>
-        <TotalAmount onRemoveModal={props.onRemoveModalHandle}></TotalAmount>
+        <TotalAmount onRemoveModal={props.onRemoveModal}>
+          {totalAmount.toFixed(2)}
+        </TotalAmount>
       </Card>
     </section>
   );

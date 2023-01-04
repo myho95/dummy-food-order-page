@@ -28,6 +28,9 @@
 .input-item input:focus {
   outline: none;
 }
+.input-item input::placeholder {
+  color: #000;
+}
 
 .button {
   font: inherit;

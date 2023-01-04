@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import classes from "./MealItem.module.css";
 
 const MealItem = (props) => {
+  const inputItem = useRef();
+  const submitHandle = (event) => {
+    event.preventDefault();
+    props.onAddCartItem(inputItem.current?.value || "1", props.mealItem);
+  };
   return (
     <>
       <div className={classes["cart-item"]}>
@@ -10,15 +15,24 @@ const MealItem = (props) => {
           <p className={classes["description"]}>{props.mealItem.description}</p>
           <p className={classes["price"]}>${props.mealItem.price}</p>
         </div>
-        <div className={classes["cart-item__add-item"]}>
+        <form
+          className={classes["cart-item__add-item"]}
+          onSubmit={submitHandle}
+        >
           <div className={classes["input-item"]}>
             <label htmlFor="">Amount</label>
-            <input type="number" min="1" step="1" />
+            <input
+              type="number"
+              min="1"
+              step="1"
+              ref={inputItem}
+              placeholder="1"
+            />
           </div>
-          <button type="button" className={classes.button}>
+          <button type="submit" className={classes.button}>
             + Add
           </button>
-        </div>
+        </form>
       </div>
       <hr></hr>
     </>

@@ -7,7 +7,11 @@ const Menu = (props) => {
   return (
     <Card className={classes.menu}>
       {props.mealsList.map((meal) => (
-        <MealItem mealItem={meal} key={meal.id}></MealItem>
+        <MealItem
+          mealItem={meal}
+          key={meal.id}
+          onAddCartItem={props.onAddCart}
+        ></MealItem>
       ))}
     </Card>
   );
