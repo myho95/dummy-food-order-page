@@ -24,9 +24,10 @@ const Modal = (props) => {
             );
           })}
         </ul>
-        <TotalAmount onRemoveModal={props.onRemoveModal}>
-          {totalAmount.toFixed(2)}
-        </TotalAmount>
+        <TotalAmount
+          onRemoveModal={props.onRemoveModal}
+          total={totalAmount.toFixed(2)}
+        />
       </Card>
     </section>
   );

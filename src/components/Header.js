@@ -14,6 +14,7 @@ const Header = (props) => {
           <HeaderCartButton
             cartCount={props.cartItemCount}
             onModalHandler={props.onModalHandler}
+            isAnimated={props.isBump}
           ></HeaderCartButton>
         </header>
         <div className={classes["main-image"]}>

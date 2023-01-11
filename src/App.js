@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import MealsSummary from "./components/MealsSummary";
 import Menu from "./components/Menu";
 import DUMMY_MEALS from "./components/Dummy-meals";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "./components/Modal";
 
@@ -10,6 +10,8 @@ function App() {
   const [countCartItem, setCountCartItem] = useState(0);
   const [cartItemsList, setCartItemsList] = useState([]);
   const [isShowCart, setIsShowCart] = useState(false);
+  const [isAnimated, setIsAnimate] = useState(false);
+
   const modalHandler = () => {
     setIsShowCart(true);
   };
@@ -57,6 +59,19 @@ function App() {
     setCountCartItem((prev) => prev + 1);
   };
 
+  useEffect(() => {
+    if (countCartItem === 0) {
+      return;
+    }
+    setIsAnimate(true);
+    const timer = setTimeout(() => {
+      setIsAnimate(false);
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [countCartItem]);
+
   return (
     <div className="App">
       {isShowCart &&
@@ -69,7 +84,11 @@ function App() {
           ></Modal>,
           document.getElementById("overlay-root")
         )}
-      <Header cartItemCount={countCartItem} onModalHandler={modalHandler} />
+      <Header
+        cartItemCount={countCartItem}
+        onModalHandler={modalHandler}
+        isBump={isAnimated}
+      />
       <MealsSummary></MealsSummary>
       <Menu mealsList={DUMMY_MEALS} onAddCart={addCartItemHandle}></Menu>
     </div>

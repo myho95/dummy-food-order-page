@@ -26,7 +26,7 @@ const MealItem = (props) => {
               min="1"
               step="1"
               ref={inputItem}
-              placeholder="1"
+              defaultValue="1"
             />
           </div>
           <button type="submit" className={classes.button}>

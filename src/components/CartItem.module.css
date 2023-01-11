@@ -37,3 +37,8 @@
   cursor: pointer;
   margin-left: 0.5rem;
 }
+.actions button:hover,
+.actions button:active {
+  background-color: #9e2a2b;
+  color: #fff;
+}
