@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "./UI/Card";
 import classes from "./Menu.module.css";
 import MealItem from "./MealItem";
+import Card from "../UI/Card";
 
 const Menu = (props) => {
   return (

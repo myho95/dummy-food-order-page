@@ -1,14 +1,18 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import classes from "./MealItem.module.css";
+import CartContext from "../../store/cart-context";
 
 const MealItem = (props) => {
+  const Ctx = useContext(CartContext);
   const inputItem = useRef();
   const submitHandle = (event) => {
     event.preventDefault();
-    props.onAddCartItem(inputItem.current?.value || "1", props.mealItem);
+    // props.onAddCartItem(inputItem.current?.value || "1", props.mealItem);
+    const amount = Number(inputItem.current?.value);
+    Ctx.addItem(props.mealItem, amount);
   };
   return (
-    <>
+    <React.Fragment>
       <div className={classes["cart-item"]}>
         <div className={classes["cart-item__desc"]}>
           <h4>{props.mealItem.name}</h4>
@@ -35,7 +39,7 @@ const MealItem = (props) => {
         </form>
       </div>
       <hr></hr>
-    </>
+    </React.Fragment>
   );
 };
 

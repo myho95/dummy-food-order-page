@@ -2,12 +2,6 @@ import React from "react";
 import classes from "./CartItem.module.css";
 
 const CardItem = (props) => {
-  const minusItemHandle = () => {
-    props.onMinusCartItem(props.itemId);
-  };
-  const plusItemHandle = () => {
-    props.onPlusCartItem(props.itemId);
-  };
   return (
     <li className={classes["cart-item"]}>
       <div>
@@ -18,10 +12,20 @@ const CardItem = (props) => {
         </div>
       </div>
       <div className={classes["actions"]}>
-        <button type="button" onClick={minusItemHandle}>
+        <button
+          type="button"
+          onClick={props.onMinusCartItem.bind(
+            null,
+            props.cartItem,
+            props.cartItem.id
+          )}
+        >
           -
         </button>
-        <button type="button" onClick={plusItemHandle}>
+        <button
+          type="button"
+          onClick={props.onPlusCartItem.bind(null, props.cartItem, 1)}
+        >
           +
         </button>
       </div>
